@@ -23,7 +23,7 @@ function CurrencyConverter() {
         console.log(choice)
         if (choice == 0) dispatch(increment())
         else dispatch(decrement())
-    // After every sec it was hanging the browser , that's why made the time to this much
+    // After every sec the browser started hanging  , that's why made the time to this much
     }, 10000000)
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -103,8 +103,6 @@ function CurrencyConverter() {
 
         function convertCurrency(src, target, amount) {
             const rate = getConversionRate(src, target);
-            //randomly inc and desc the prices
-            //manipulate the rate here 
             return amount * rate;
         }
 
