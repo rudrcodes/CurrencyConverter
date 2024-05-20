@@ -5,20 +5,31 @@ const initialState = {
     AUD: 0.67,
     INR: 80.05,
 }
-
+let constantValues = {
+    USD: 1.05,
+    AUD: 0.67,
+    INR: 80.05,
+}
 export const changeValues = createSlice({
     name: 'changeValues',
     initialState,
     reducers: {
         increment: (state) => {
-            state.USD = state.USD + (0.03 * state.USD)
-            state.AUD = state.AUD + (0.03 * state.AUD)
-            state.INR = state.INR + (0.03 * state.INR)
+            //yeh change bhi randomly lena hai
+            let change = Math.floor(Math.random() * 3) * (0.01)
+            state.USD = constantValues.USD + (change * constantValues.USD)
+
+            state.AUD = constantValues.AUD + (change * constantValues.AUD)
+
+            state.INR = constantValues.INR + (change * constantValues.INR)
         },
         decrement: (state) => {
-            state.USD = state.USD - (0.03 * state.USD)
-            state.AUD = state.AUD - (0.03 * state.AUD)
-            state.INR = state.INR - (0.03 * state.INR)
+            let change = Math.floor(Math.random() * 3) * (0.01)
+            state.USD = (constantValues.USD - (change * constantValues.USD)) >= 0 ? (constantValues.USD - (change * constantValues.USD)) : constantValues.USD + (change * constantValues.USD)
+
+            state.AUD = (constantValues.AUD - (change * constantValues.AUD)) >= 0 ? (constantValues.AUD - (change * constantValues.AUD)) : constantValues.AUD + (change * constantValues.AUD)
+
+            state.INR = (constantValues.INR - (change * constantValues.INR)) >= 0 ? (constantValues.INR - (change * constantValues.INR)) : constantValues.INR + (change * constantValues.INR)
         },
     },
 })
