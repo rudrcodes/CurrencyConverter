@@ -11,9 +11,9 @@ function CurrencyConverter() {
     const [target, setTarget] = useState('')
     const [convertedCurrency, setconvertedCurrency] = useState(null)
     const [inputCurrency, setinputCurrency] = useState(null)
-    const usdVal = useSelector(state => state.changeValues.USD)
-    const audVal = useSelector(state => state.changeValues.AUD)
-    const inrVal = useSelector(state => state.changeValues.INR)
+    const usdVal = useSelector(state => state.changeValues.USD).toFixed(2)
+    const audVal = useSelector(state => state.changeValues.AUD).toFixed(2)
+    const inrVal = useSelector(state => state.changeValues.INR).toFixed(2)
 
 
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function CurrencyConverter() {
         if (choice == 0) dispatch(increment())
         else dispatch(decrement())
     // After every sec the browser started hanging  , that's why made the time to this much
-    }, 1000)
+    }, 1200)
     const handleSubmit = (e) => {
         e.preventDefault();
         if (src.length == 0) {
@@ -108,7 +108,7 @@ function CurrencyConverter() {
 
         let ans = convertCurrency(src, target, inputCurrency)
 
-        setconvertedCurrency(ans)
+        setconvertedCurrency(ans.toFixed(2))
 
 
     }

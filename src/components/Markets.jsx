@@ -3,9 +3,9 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 
 const Markets = () => {
-  const usdVal = useSelector(state => state.changeValues.USD)
-  const audVal = useSelector(state => state.changeValues.AUD)
-  const inrVal = useSelector(state => state.changeValues.INR)
+  const usdVal = useSelector(state => state.changeValues.USD).toFixed(2)
+  const audVal = useSelector(state => state.changeValues.AUD).toFixed(2)
+  const inrVal = useSelector(state => state.changeValues.INR).toFixed(2)
   return (
     <div className='min-w-[400px] min-h-[500px] bg-blue-900 p-6 rounded-lg'>
       <h1 className='text-2xl text-bold text-white my-2'>Markets</h1>
