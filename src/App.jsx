@@ -4,8 +4,6 @@ import Markets from './components/Markets';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// npm install -D tailwindcss postcss autoprefixer
-// npx tailwindcss init -p
 
 function App() {
 
