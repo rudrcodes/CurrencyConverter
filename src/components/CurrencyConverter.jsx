@@ -24,7 +24,7 @@ function CurrencyConverter() {
         if (choice == 0) dispatch(increment())
         else dispatch(decrement())
     // After every sec the browser started hanging  , that's why made the time to this much
-    }, 10000000)
+    }, 1000)
     const handleSubmit = (e) => {
         e.preventDefault();
         if (src.length == 0) {
