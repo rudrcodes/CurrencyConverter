@@ -2,13 +2,29 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../reduxStore/features/changeValues';
+
 
 function CurrencyConverter() {
     const [src, setSrc] = useState('')
     const [target, setTarget] = useState('')
     const [convertedCurrency, setconvertedCurrency] = useState(null)
     const [inputCurrency, setinputCurrency] = useState(null)
+    const usdVal = useSelector(state => state.changeValues.USD)
+    const audVal = useSelector(state => state.changeValues.AUD)
+    const inrVal = useSelector(state => state.changeValues.INR)
 
+
+    const dispatch = useDispatch();
+
+    setInterval(() => {
+        let choice = Math.floor(Math.random() * 2);
+        console.log(choice)
+        if (choice == 0) dispatch(increment())
+        else dispatch(decrement())
+    // After every sec it was hanging the browser , that's why made the time to this much
+    }, 10000000)
     const handleSubmit = (e) => {
         e.preventDefault();
         if (src.length == 0) {
@@ -51,24 +67,24 @@ function CurrencyConverter() {
 
         const conversionRates = {
             "EUR": {
-                "USD": 1.05,
-                "INR": (1.05 * 80.05),
-                "AUD": (1.05 / 0.67)
+                "USD": usdVal,
+                "INR": (usdVal * inrVal),
+                "AUD": (usdVal / audVal)
             },
             "USD": {
-                "INR": 80.05,
-                "EUR": 1 / 1.05,
-                "AUD": 1 / 0.67,
+                "INR": inrVal,
+                "EUR": 1 / usdVal,
+                "AUD": 1 / audVal,
             },
             "AUD": {
-                "USD": 0.67,
-                "INR": 80.05 * 0.67,
-                "EUR": (0.67 / 1.05)
+                "USD": audVal,
+                "INR": inrVal * audVal,
+                "EUR": (audVal / usdVal)
             },
             "INR": {
-                "USD": 1 / 80.05,
-                "AUD": 1 / (80.05 * 0.67),
-                "EUR": 1 / (1.05 * 80.05)
+                "USD": 1 / inrVal,
+                "AUD": 1 / (inrVal * audVal),
+                "EUR": 1 / (usdVal * inrVal)
             }
         };
 
