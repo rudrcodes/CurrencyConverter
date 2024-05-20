@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { toast } from 'react-toastify';
 
 function CurrencyConverter() {
     const [src, setSrc] = useState('')
@@ -10,9 +11,41 @@ function CurrencyConverter() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (src == "") return alert("Select Source curreny ")
-        if (target == "") return alert("Select Target curreny ")
-            if(inputCurrency==null) return alert("no ip")
+        if (src.length == 0) {
+
+            return toast(' Select Source curreny!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+        if (target == "") {
+            return toast(' Select Target curreny!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+        if (inputCurrency == null) return toast(' Enter input amount!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
         console.log(src, target)
 
 
@@ -67,7 +100,7 @@ function CurrencyConverter() {
     }
     return (
 
-        <Form onSubmit={handleSubmit} className='bg-gray-200 p-4 min-w-[400px] rounded-lg flex justify-center items-center flex-col'>
+        <Form onSubmit={handleSubmit} className='min-h-[500px] bg-gray-200 p-4 min-w-[400px] rounded-lg flex justify-center items-center flex-col'>
             <h1 className='text-2xl text-bold'>Currency Converter</h1>
             <div>
 
@@ -104,7 +137,7 @@ function CurrencyConverter() {
                     } value={inputCurrency} />
                 </Form.Group>
                 <Form.Group className="mb-3 bg-gray-100 p-4 text-gray-500">
-                    <Form.Label>Estimated converted amount: <span className='text-green-700 pl-4'>{convertedCurrency}</span></Form.Label>
+                    <Form.Label>Estimated converted amount: <span className='text-green-600 pl-4'>{convertedCurrency}</span></Form.Label>
                 </Form.Group>
                 <div className='flex justify-center items-center text-bold'>
                     <button type="submit" className="mb-3 rounded-md bg-gray-100 py-1 px-10 text-black " >Exchange</button>
