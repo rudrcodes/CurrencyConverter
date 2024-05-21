@@ -7,7 +7,7 @@ const Markets = () => {
   const audVal = useSelector(state => state.changeValues.AUD).toFixed(2)
   const inrVal = useSelector(state => state.changeValues.INR).toFixed(2)
   return (
-    <div className='min-w-[400px] min-h-[500px] bg-blue-900 p-6 rounded-lg'>
+    <div className='min-w-[400px] md:min-h-[500px] bg-blue-900 p-6 rounded-lg'>
       <h1 className='text-2xl text-bold text-white my-2'>Markets</h1>
       <Table striped bordered hover>
 

@@ -122,7 +122,7 @@ function CurrencyConverter() {
     }
     return (
 
-        <Form onSubmit={handleSubmit} className='min-h-[500px] bg-gray-200 p-4 min-w-[400px] rounded-lg flex justify-center items-center flex-col'>
+        <Form onSubmit={handleSubmit} className='border border-gray-400 md:min-h-[500px] bg-gray-200 p-4 min-w-[400px] rounded-lg flex justify-center items-center flex-col'>
             <h1 className='text-2xl text-bold'>Currency Converter</h1>
             <div>
 

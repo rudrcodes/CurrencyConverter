@@ -8,12 +8,15 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
-    <div className='App bg-gray-100'>
+    // <div className='bg-gray-100 '>
+
+    <div className='App bg-gray-100 h-screen w-screen  p-4 '>
       <ToastContainer />
-      <div className='container  justify-center lg:justify-between'>
+      <div className='container h-full justify-center lg:justify-between gap-10 p-10'>
         <Markets />
         <CurrencyConverter />
       </div>
+      {/* </div> */}
     </div>
   )
 }
