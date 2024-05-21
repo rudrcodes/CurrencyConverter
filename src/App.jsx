@@ -10,7 +10,7 @@ function App() {
   return (
     // <div className='bg-gray-100 '>
 
-    <div className='App bg-gray-100 h-screen w-screen  p-4 '>
+    <div className='App  h-full w-screen  p-4 '>
       <ToastContainer />
       <div className='container h-full  justify-center lg:justify-between gap-10 p-10'>
         <Markets />
