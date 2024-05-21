@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,15 +17,21 @@ function CurrencyConverter() {
 
     const dispatch = useDispatch();
 
-    const updateFunc = () => {
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let choice = Math.floor(Math.random() * 2);
+            // console.log(choice)
+            if (choice == 0) dispatch(increment())
+            else if (choice == 1) dispatch(decrement())
 
-        let choice = Math.floor(Math.random() * 2);
-        console.log(choice)
-        if (choice == 0) dispatch(increment())
-        else if (choice == 1) dispatch(decrement())
-        setTimeout(updateFunc, 1400)
-    }
-    updateFunc()
+        }, 1000)
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +70,7 @@ function CurrencyConverter() {
             progress: undefined,
             theme: "dark",
         });
-        console.log(src, target)
+        // console.log(src, target)
 
 
         const conversionRates = {
